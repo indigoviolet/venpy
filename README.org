@@ -27,3 +27,26 @@ class Memo:
     def memoized_instmethod(self, x, bar, baz):
         ...
 #+end_example
+
+
+** index_by
+
+Construct an index of a collection based on a key function (or a hashable
+item-type). Supports unique =k->v= indexes, set-based =k->{v}=, or list-based =k->[v]=
+indexes.
+
+
+#+begin_example
+
+    items = [1, 2, 2, 4, 3, 3, 5]
+    by_func: Callable[[int], int] = lambda i: i % 2
+
+    uniq_idx = index_by(items, by=by_func)
+    set_idx = index_by(items, by=by_func, collection="set")
+    list_idx = index_by(items, by=by_func, collection="list")
+
+    assert uniq_idx == {1: 5, 0: 4}
+    assert set_idx == {1: set([1, 3, 5]), 0: set([2, 4])}
+    assert list_idx == {1: [1, 3, 3, 5], 0: [2, 2, 4]}
+
+#+end_example
