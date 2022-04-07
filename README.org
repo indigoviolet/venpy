@@ -1,0 +1,29 @@
+
+* venpy
+
+Python utilities that Venky likes
+
+
+** Cache
+
+Memoization that works on functions, instance methods, classmethods etc. The
+cache object is not global, it lives on the function object or the instance or
+the class.
+
+
+#+begin_example python
+@cache
+def memoized_function(x, bar, baz):
+    ...
+
+
+class Memo:
+    @cache
+    @classmethod
+    def memoized_clsmethod(cls, x, bar, baz):
+        ...
+
+    @cache
+    def memoized_instmethod(self, x, bar, baz):
+        ...
+#+end_example
