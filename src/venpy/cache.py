@@ -1,12 +1,14 @@
-from typing import Dict, Callable, Any
+from __future__ import annotations
+
 import inspect
+
 import wrapt
 
 CACHE_KEY = "__justcache"
 SIG_KEY = "__sig"
 
 
-def get_cache_data(wrapped, instance) -> Dict:
+def get_cache_data(wrapped, instance) -> dict:
     if instance is None:
         return vars(wrapped).setdefault(CACHE_KEY, {})
     else:
@@ -32,7 +34,7 @@ def cache_key(cache_data, wrapped, args, kwargs) -> int:
 
 
 @wrapt.decorator
-def cache(wrapped, instance, args, kwargs):  # type: ignore
+def cache(wrapped, instance, args, kwargs):
     cache_data = get_cache_data(wrapped, instance)
     key = cache_key(cache_data, wrapped, args, kwargs)
 
@@ -41,5 +43,10 @@ def cache(wrapped, instance, args, kwargs):  # type: ignore
     return cache_data[key]
 
 
+# See
 # https://github.com/GrahamDumpleton/wrapt/issues/134#issuecomment-1083680371
-cache: Callable[[Callable[..., Any]], Callable[..., Any]]
+# for an error about 'Arguments missing for parameters "instance", "args",
+# "kwargs"'
+#
+# Also this type declaration doesn't seem to work? -- cache doesn't get the decorated type
+# cache: Callable[[Callable[..., Any]], Callable[..., Any]]
