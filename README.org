@@ -50,3 +50,7 @@ indexes.
     assert list_idx == {1: [1, 3, 3, 5], 0: [2, 2, 4]}
 
 #+end_example
+
+** keydefaultdict
+
+Create a defaultdict whose factory function takes the key as argument.
