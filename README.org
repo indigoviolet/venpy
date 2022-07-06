@@ -54,3 +54,7 @@ indexes.
 ** keydefaultdict
 
 Create a defaultdict whose factory function takes the key as argument.
+
+** none_throws
+
+Utility function that throws an exception if its argument is None
