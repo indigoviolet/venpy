@@ -58,3 +58,8 @@ Create a defaultdict whose factory function takes the key as argument.
 ** none_throws
 
 Utility function that throws an exception if its argument is None
+
+** ContextMixin
+
+Create classes that behave as context managers, but implement them as generators
+instead of working with ~__enter__/__exit__~: override the ~__context__~ method
