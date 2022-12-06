@@ -10,6 +10,7 @@ license = "MIT"
 readme = "README.md"
 keywords = []
 classifiers = ['Intended Audience :: Developers']
+dependencies = ["wrapt", "typing-extensions", "snoop"]
 
 [project.urls]
 Homepage = "https://github.com/indigoviolet/venpy"
@@ -20,7 +21,6 @@ path = "src/venpy/__about__.py"
 [tool.hatch.envs.default]
 path = ".venv"
 python = "3.8"
-dependencies = ["wrapt", "typing-extensions", "snoop"]
 
 [tool.hatch.envs.dev]
 extra-dependencies = ["mypy", "pytest", "pytest-mock"]

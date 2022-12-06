@@ -1,4 +1,8 @@
 
+* 0.2.3
+
+- dependency spec in pyproject.toml
+
 * 0.2.2
 
 - support python>=3.8
