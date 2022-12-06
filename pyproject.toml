@@ -1,6 +1,6 @@
 [project]
 name = "venpy"
-version = "0.1.0"
+version = "0.2.0"
 description = "Python utilities that Venky likes"
 authors = [
         {name = "Venky Iyer", email = "indigoviolet@gmail.com"}
@@ -10,15 +10,13 @@ license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/indigoviolet/venpy"
 keywords = []
-classifiers = [
-              'Intended Audience :: Developers',
-            ]
+classifiers = ['Intended Audience :: Developers']
 
 
 [tool.hatch.envs.default]
 path = ".venv"
 python = "3.9"
-dependencies = ["wrapt", "typing-extensions"]
+dependencies = ["wrapt", "typing-extensions", "snoop"]
 
 [tool.hatch.envs.dev]
 extra-dependencies = ["mypy", "pytest", "pytest-mock"]
@@ -26,25 +24,9 @@ extra-dependencies = ["mypy", "pytest", "pytest-mock"]
 [tool.hatch.build]
 packages = ["src/venpy"]
 
-# [tool.poetry.dependencies]
-# python = "^3.8"
-# wrapt = "^1.14.0"
-# typing-extensions = "^4.3.0"
-
-
-# [tool.poetry.dev-dependencies]
-# mypy = "^0.942"
-# pytest = "^7.1.1"
-# pytest-mock = "^3.7.0"
-
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
-
-
-# [build-system]
-# requires = ["poetry-core>=1.0.0"]
-# build-backend = "poetry.core.masonry.api"
 
 [tool.pyright]
 

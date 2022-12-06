@@ -41,12 +41,3 @@ def cache(wrapped, instance, args, kwargs):
     if key not in cache_data:
         cache_data[key] = wrapped(*args, **kwargs)
     return cache_data[key]
-
-
-# See
-# https://github.com/GrahamDumpleton/wrapt/issues/134#issuecomment-1083680371
-# for an error about 'Arguments missing for parameters "instance", "args",
-# "kwargs"'
-#
-# Also this type declaration doesn't seem to work? -- cache doesn't get the decorated type
-# cache: Callable[[Callable[..., Any]], Callable[..., Any]]
