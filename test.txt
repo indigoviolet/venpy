@@ -1,0 +1,3 @@
+This is a test file that I'm adding to experiment with something about Github
+Review; namely, whether I can delete it after committing, and have a PR
+recognize it as a new file.
