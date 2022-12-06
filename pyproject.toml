@@ -1,6 +1,6 @@
 [project]
 name = "venpy"
-version = "0.2.0"
+dynamic = ["version"]
 description = "Python utilities that Venky likes"
 authors = [
         {name = "Venky Iyer", email = "indigoviolet@gmail.com"}
@@ -8,10 +8,14 @@ authors = [
 requires-python = ">=3.9"
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/indigoviolet/venpy"
 keywords = []
 classifiers = ['Intended Audience :: Developers']
 
+[project.urls]
+homepage = "https://github.com/indigoviolet/venpy"
+
+[tool.hatch.version]
+path = "src/venpy/__about__.py"
 
 [tool.hatch.envs.default]
 path = ".venv"
