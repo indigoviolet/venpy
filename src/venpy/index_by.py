@@ -9,6 +9,8 @@ from typing import (
     cast,
     Literal,
     overload,
+    List,
+    Set,
 )
 from collections import defaultdict
 
@@ -30,9 +32,7 @@ _K = TypeVar("_K", bound=Hashable)
 
 @overload
 def index_by(
-    items: Iterable[_T],
-    *,
-    by: Optional[Callable[[_T], _K]] = ...,
+    items: Iterable[_T], *, by: Optional[Callable[[_T], _K]] = ...
 ) -> defaultdict[_K, _T]:
     ...
 
@@ -63,7 +63,7 @@ def index_by(
     *,
     by: Optional[Callable[[_T], _K]] = ...,
     collection: Literal["list"],
-) -> defaultdict[_K, list[_T]]:
+) -> defaultdict[_K, List[_T]]:
     ...
 
 
@@ -75,14 +75,14 @@ def index_by(
 ) -> Union[defaultdict[_K, _T], defaultdict[_K, set[_T]], defaultdict[_K, list[_T]]]:
 
     if collection is None:
-        index = defaultdict()  # type: ignore
+        index = defaultdict()
         adder = lambda k, x: index.update({k: x})
     elif collection == "list":
         index = defaultdict(list)
-        adder = lambda k, x: cast(list[_T], index[k]).append(x)
+        adder = lambda k, x: cast(List[_T], index[k]).append(x)
     elif collection == "set":
         index = defaultdict(set)
-        adder = lambda k, x: cast(set[_T], index[k]).add(x)
+        adder = lambda k, x: cast(Set[_T], index[k]).add(x)
     else:
         raise RuntimeError("invalid collection")
 

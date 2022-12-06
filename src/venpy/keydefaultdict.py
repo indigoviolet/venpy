@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Callable, Optional, TypeVar
+from typing import Callable, Optional, TypeVar, DefaultDict
 
 K = TypeVar("K")
 V = TypeVar("V")
@@ -10,7 +10,7 @@ V = TypeVar("V")
 
 # After https://stackoverflow.com/a/2912455
 @dataclass
-class keydefaultdict(defaultdict[K, V]):
+class keydefaultdict(DefaultDict[K, V]):
     default_factory: Optional[Callable[[K], V]] = None  # type: ignore
 
     def __missing__(self, key):
